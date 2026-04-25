@@ -6,314 +6,888 @@
 <title>Tom Young</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Geist:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #faf9f7;
-  --surface: #f2f0ec;
-  --text: #1a1916;
-  --muted: #9a9690;
-  --soft: #c8c4be;
-  --border: #e6e3dd;
-  --accent: #c07a4a;
+  --bg: #ffffff;
+  --surface: #f5f5f4;
+  --text: #1a1a1a;
+  --muted: #8a8a8a;
+  --soft: #d4d4d4;
+  --border: #ebebeb;
+  --accent: #1a1a1a;
+  --link: #1a1a1a;
 }
 
-html { scroll-behavior: smooth; }
+html, body { height: 100%; }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'Geist', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 15px;
-  font-weight: 300;
-  line-height: 1.7;
+  font-weight: 400;
+  line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 a { color: inherit; text-decoration: none; }
 
-.wrap {
-  max-width: 640px;
-  margin: 0 auto;
-  padding: 0 32px;
+/* Header */
+header {
+  padding: 24px 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-/* Nav */
-nav { padding: 28px 0 0; margin-bottom: 80px; }
-.nav-inner { display: flex; justify-content: space-between; align-items: baseline; }
-.nav-name {
-  font-family: 'Fraunces', serif;
-  font-size: 16px; font-weight: 400; font-style: italic;
-}
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); transition: color 0.15s; }
-.nav-links a:hover { color: var(--text); }
-
-/* Hero */
-.hero { margin-bottom: 96px; }
-.hero-greeting { font-size: 13px; font-weight: 400; color: var(--muted); margin-bottom: 20px; }
-.hero-text {
-  font-family: 'Fraunces', serif;
-  font-size: clamp(28px, 5vw, 40px);
-  font-weight: 300; line-height: 1.3; letter-spacing: -0.01em;
-  margin-bottom: 28px;
-}
-.hero-text em { font-style: italic; color: var(--accent); }
-.hero-sub { font-size: 15px; color: var(--muted); line-height: 1.85; }
-.hero-sub a {
+.logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--text);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--text);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 1px;
-  transition: border-color 0.15s;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: opacity 0.15s, background 0.15s, color 0.15s;
 }
-.hero-sub a:hover { border-color: var(--text); }
+.logo:hover {
+  background: var(--text);
+  color: var(--bg);
+}
 
-/* Sections */
-.section { margin-bottom: 88px; }
-.section-head { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
-.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
-.section-rule { flex: 1; height: 1px; background: var(--border); }
+.nav-links {
+  display: flex; gap: 28px; list-style: none;
+}
+.nav-links a {
+  font-size: 14px; color: var(--text); font-weight: 400;
+  position: relative; padding-bottom: 4px;
+  transition: color 0.15s;
+}
+.nav-links a:hover { color: var(--muted); }
+.nav-links a.active {
+  font-weight: 500;
+}
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1.5px;
+  background: var(--accent);
+}
 
-/* Work */
-.work-item {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
+/* Main content area */
+main {
+  flex: 1;
+  padding: 0 56px;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Hero / intro */
+.intro {
+  max-width: 720px;
+  margin: 60px auto 80px;
+  text-align: left;
+}
+.intro h1 {
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  margin-bottom: 20px;
+}
+.intro p {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 640px;
+}
+.intro p a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--soft);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+}
+.intro p a:hover { text-decoration-color: var(--text); }
+
+/* Tab sections */
+.tab-section { display: none; }
+.tab-section.active { display: block; }
+
+/* Work grid */
+.work-section-label {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  letter-spacing: 0.01em;
+}
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 80px;
+}
+
+.work-card {
+  background: var(--surface);
+  border-radius: 6px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+  transition: background 0.15s, transform 0.15s;
   cursor: pointer;
+  border: none;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  width: 100%;
 }
-.work-item:first-child { border-top: 1px solid var(--border); }
-.work-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-.work-company { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
-.work-role { font-size: 13px; color: var(--muted); }
-.work-toggle {
-  font-size: 20px; color: var(--soft); transition: transform 0.2s, color 0.15s;
-  flex-shrink: 0; margin-top: 1px; user-select: none; line-height: 1;
-}
-.work-item.open .work-toggle { transform: rotate(45deg); color: var(--accent); }
-.work-expand { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
-.work-item.open .work-expand { max-height: 500px; padding-top: 16px; }
-.work-note { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 12px; }
-.work-points { list-style: none; display: flex; flex-direction: column; gap: 7px; }
-.work-points li {
-  font-size: 13.5px; color: #6e6b65; line-height: 1.65;
-  padding-left: 16px; position: relative;
-}
-.work-points li::before { content: '–'; position: absolute; left: 0; color: var(--soft); }
-.work-points strong { color: var(--text); font-weight: 500; }
+.work-card:hover { background: #efefee; transform: translateY(-2px); }
+.work-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
-/* Writing */
+.work-visual {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  background: var(--surface);
+  border-radius: 4px;
+  overflow: hidden;
+  min-height: 180px;
+}
+/* Brand colors only on the mini icon below each tile */
+.work-card[data-company="whop"]   .work-icon { background: #FA4616; }
+.work-card[data-company="sorare"] .work-icon { background: #0E1538; }
+.work-card[data-company="cbi"]    .work-icon { background: #0E2C50; }
+.work-visual svg { max-width: 100%; height: auto; }
+.work-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.work-card:hover .work-visual img { transform: scale(1.02); }
+
+.work-meta {
+  display: flex; align-items: center; gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+.work-icon {
+  width: 28px; height: 28px;
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: #141212;
+}
+.work-icon img { width: 100%; height: 100%; object-fit: cover; }
+
+.work-info { flex: 1; min-width: 0; }
+.work-title { font-size: 14px; font-weight: 600; color: var(--text); }
+.work-tag { font-size: 12px; color: var(--muted); margin-top: 1px; }
+
+/* Writing list */
+.writing-wrap {
+  max-width: 600px;
+  margin: 0 auto 80px;
+}
+.writing-wrap h2 {
+  font-size: 24px; font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 12px;
+}
+.writing-intro {
+  font-size: 14px; color: var(--muted);
+  margin-bottom: 48px; max-width: 480px;
+}
+
 .writing-item {
-  display: flex; justify-content: space-between; align-items: baseline;
-  gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border);
+  display: flex; gap: 24px; align-items: flex-start;
+  padding: 20px 0;
 }
-.writing-item:first-child { border-top: 1px solid var(--border); }
-.writing-title { font-size: 15px; font-weight: 400; color: var(--text); line-height: 1.4; transition: color 0.15s; }
-.writing-item:hover .writing-title { color: var(--accent); }
-.draft-pill {
-  font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
-  background: var(--surface); color: var(--muted);
-  padding: 2px 8px; border-radius: 20px; border: 1px solid var(--border);
-  white-space: nowrap; flex-shrink: 0;
+.writing-thumb {
+  width: 100px; height: 80px;
+  background: var(--surface);
+  border-radius: 4px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  color: var(--soft);
+}
+.writing-info { flex: 1; min-width: 0; }
+.writing-title { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+.writing-snippet { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 6px; }
+.writing-meta {
+  font-size: 11px; font-weight: 500;
+  color: var(--soft);
 }
 
-/* About strip */
-.about-strip {
-  background: var(--surface); border-radius: 12px;
-  padding: 28px 32px; font-size: 14px; color: var(--muted);
-  line-height: 1.9; margin-bottom: 88px;
+/* About */
+.about-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  max-width: 760px;
+  margin: 0 auto 64px;
+  align-items: start;
 }
-.about-strip strong { color: var(--text); font-weight: 500; }
+.about-text p {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+.about-text p:last-child { margin-bottom: 0; }
+.about-text a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--soft);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s;
+}
+.about-text a:hover { text-decoration-color: var(--text); }
 
-/* Contact */
-.contact-intro {
-  font-family: 'Fraunces', serif;
-  font-size: 24px; font-weight: 300; font-style: italic;
-  margin-bottom: 24px; line-height: 1.4;
+.about-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--surface);
 }
-.contact-row {
-  display: flex; align-items: center; gap: 16px;
-  padding: 12px 0; border-bottom: 1px solid var(--border);
+.about-photo img {
+  width: 100%; height: 100%;
+  display: block;
+  object-fit: cover;
 }
-.contact-row:first-of-type { border-top: 1px solid var(--border); }
-.contact-lbl {
-  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--muted); width: 72px; flex-shrink: 0;
+
+.achievements {
+  max-width: 600px;
+  margin: 0 auto 80px;
 }
-.contact-val {
-  font-size: 14px; color: var(--text);
-  border-bottom: 1px solid transparent; padding-bottom: 1px;
-  transition: color 0.15s, border-color 0.15s;
+.achievements h2 {
+  font-size: 22px; font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
 }
-.contact-val:hover { color: var(--accent); border-color: var(--accent); }
+.ach-row {
+  display: flex; justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.ach-row:first-child { border-top: 1px solid var(--border); }
+.ach-label { color: var(--text); }
+.ach-status { color: var(--muted); }
 
 /* Footer */
-footer { padding: 20px 0 48px; border-top: 1px solid var(--border); margin-top: 0; }
-footer p { font-size: 12px; color: var(--soft); }
+footer {
+  border-top: 1px solid var(--border);
+  padding: 20px 56px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+}
+footer a.email {
+  color: var(--text);
+  border-bottom: 1px solid var(--text);
+  padding-bottom: 1px;
+}
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.footer-avatar {
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: block;
+  flex-shrink: 0;
+  transition: opacity 0.15s;
+}
+.footer-avatar:hover { opacity: 0.8; }
+.footer-avatar img {
+  width: 100%; height: 100%;
+  display: block;
+  object-fit: cover;
+}
+.socials {
+  display: flex; gap: 16px;
+}
+.socials a {
+  width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted);
+  transition: color 0.15s;
+}
+.socials a:hover { color: var(--text); }
+.socials svg { width: 16px; height: 16px; }
 
 /* Fade */
-.fade { opacity: 0; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade { opacity: 0; transform: translateY(8px); transition: opacity 0.4s ease, transform 0.4s ease; }
 .fade.in { opacity: 1; transform: none; }
 
-@media (max-width: 560px) {
-  .wrap { padding: 0 20px; }
-  .hero-text { font-size: 26px; }
-  .writing-item { flex-direction: column; gap: 6px; }
+@media (max-width: 900px) {
+  .work-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-wrap { grid-template-columns: 1fr; }
+  .about-photo { max-width: 320px; }
+}
+
+@media (max-width: 640px) {
+  header, footer { padding-left: 24px; padding-right: 24px; }
+  main { padding: 0 24px; }
+  .work-grid { grid-template-columns: 1fr; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 13px; }
+  .writing-item { flex-direction: column; }
+  .writing-thumb { width: 100%; height: 120px; }
+}
+
+/* Work detail modal — case study layout */
+.work-modal {
+  position: fixed; inset: 0;
+  display: none;
+  align-items: flex-start; justify-content: center;
+  z-index: 100;
+  padding: 40px 24px;
+  overflow-y: auto;
+}
+.work-modal.open { display: flex; }
+.modal-backdrop {
+  position: fixed; inset: 0;
+  background: rgba(20, 18, 18, 0.6);
+  backdrop-filter: blur(3px);
+}
+.modal-card {
+  position: relative;
+  background: var(--bg);
+  border-radius: 14px;
+  max-width: 760px;
+  width: 100%;
+  padding: 56px 64px 48px;
+  box-shadow: 0 24px 80px rgba(0,0,0,0.22);
+  animation: modalIn 0.22s ease-out;
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+.modal-close {
+  position: absolute; top: 18px; right: 18px;
+  background: transparent; border: none;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  font-size: 22px; line-height: 1;
+  color: var(--muted);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.15s;
+  z-index: 2;
+}
+.modal-close:hover { background: var(--surface); color: var(--text); }
+
+.modal-hero {
+  width: calc(100% + 128px);
+  margin: -56px -64px 32px;
+  aspect-ratio: 16 / 9;
+  background: var(--surface);
+  overflow: hidden;
+  border-radius: 14px 14px 0 0;
+}
+.modal-hero img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.modal-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 10px;
+}
+.modal-icon {
+  width: 52px; height: 52px;
+  border-radius: 10px;
+  background: #141212;
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+.work-modal[data-company="whop"]   .modal-icon { background: #FA4616; }
+.work-modal[data-company="sorare"] .modal-icon { background: #0E1538; }
+.work-modal[data-company="cbi"]    .modal-icon { background: #0E2C50; }
+.modal-icon img { width: 100%; height: 100%; object-fit: cover; }
+.modal-title {
+  font-size: 30px; font-weight: 600; color: var(--text);
+  letter-spacing: -0.01em;
+}
+.modal-meta {
+  font-size: 13px; color: var(--muted);
+  margin-bottom: 24px;
+}
+.modal-intro {
+  font-size: 16px; color: var(--text); line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 620px;
+}
+
+.modal-role {
+  font-size: 14.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 36px;
+  max-width: 620px;
+}
+
+.modal-sections-label {
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+.modal-sections { margin-bottom: 40px; }
+.modal-section-item {
+  padding: 28px 0;
+  border-top: 1px solid var(--border);
+}
+.modal-section-item:last-child { border-bottom: 1px solid var(--border); }
+.modal-section-source {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+.modal-section-title {
+  font-size: 19px; font-weight: 600; color: var(--text);
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+.modal-section-title a { color: inherit; text-decoration: none; transition: color 0.15s; }
+.modal-section-title a:hover { color: var(--muted); }
+.modal-section-body {
+  font-size: 14.5px; color: var(--muted); line-height: 1.6;
+  max-width: 620px;
+}
+.modal-section-body a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--soft);
+  text-underline-offset: 3px;
+}
+.modal-section-body a:hover { text-decoration-color: var(--text); }
+.modal-section-image {
+  margin-top: 18px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 360px;
+}
+.modal-section-image img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  display: block;
+}
+
+.modal-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  margin-top: 8px;
+  min-height: 24px;
+}
+.modal-nav-link {
+  font-size: 16px; font-weight: 600; color: var(--text);
+  background: none; border: none; cursor: pointer;
+  padding: 0; font-family: inherit;
+  transition: color 0.15s;
+}
+.modal-nav-link:hover { color: var(--muted); }
+.modal-nav-spacer { flex: 0 0 auto; }
+
+@media (max-width: 640px) {
+  .modal-card { padding: 40px 28px 32px; }
+  .modal-title { font-size: 24px; }
+  .modal-section-title { font-size: 17px; }
 }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <nav>
-    <div class="nav-inner">
-      <a href="#" class="nav-name">Tom Young</a>
-      <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#writing">Writing</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
+<header>
+  <a href="#" class="logo" aria-label="Tom Young">Ty</a>
+  <ul class="nav-links">
+    <li><a href="#work" class="active">Work</a></li>
+    <li><a href="#thoughts">Thoughts</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+</header>
 
-  <div class="hero fade">
-    <p class="hero-greeting">Hey, I'm Tom —</p>
-    <h1 class="hero-text">finance person trying to<br>build things that <em>matter.</em></h1>
-    <p class="hero-sub">
-      I run strategic finance at <a href="https://whop.com" target="_blank">Whop</a>, a platform for creators and online businesses. Before that I was at <a href="https://sorare.com" target="_blank">Sorare</a> and <a href="https://cbinsights.com" target="_blank">CB Insights</a>. Williams College, Economics. Based in New York.
-    </p>
-  </div>
+<main>
 
-  <div class="section fade" id="work">
-    <div class="section-head">
-      <span class="section-label">Work</span>
-      <div class="section-rule"></div>
+  <!-- WORK TAB -->
+  <div class="tab-section fade active" id="work">
+    <div class="intro">
+      <h1>Currently leading strategic finance at Whop.</h1>
+      <p>Helps Whop find repeatable, efficient ways to allocate capital and invest resources — setting crazy targets with very talented people and hitting them. Previously, finance, ops, and sales in gaming and software.</p>
     </div>
 
-    <div class="work-item" onclick="this.classList.toggle('open')">
-      <div class="work-top">
-        <div>
-          <div class="work-company">Whop</div>
-          <div class="work-role">Strategic Finance Manager · 2024 – present</div>
+    <div class="work-section-label">Some shops i've worked at:</div>
+
+    <div class="work-grid">
+      <button class="work-card" data-company="whop" aria-label="Open Whop details">
+        <div class="work-visual">
+          <img src="img/whop-site.jpg" alt="Whop website">
         </div>
-        <div class="work-toggle">+</div>
-      </div>
-      <div class="work-expand">
-        <p class="work-note">Series C creator economy platform — payments, tooling & apps for online businesses.</p>
-        <ul class="work-points">
-          <li>Report directly to the CEO; own the finance function end-to-end</li>
-          <li>Led our Series C — closed a <strong>large strategic investment from Tether</strong>, doubling the company's valuation</li>
-          <li>Managed a period of really efficient growth — <strong>revenue scaled 4× YoY</strong> while EBITDA went from deeply negative to breakeven</li>
-          <li>Partner with product, data, and sales on capital allocation and unit economics</li>
-          <li>Own sales tax strategy across US and international jurisdictions</li>
-          <li>Run monthly planning, forecasting, and budgeting with all department heads</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="work-item" onclick="this.classList.toggle('open')">
-      <div class="work-top">
-        <div>
-          <div class="work-company">Sorare</div>
-          <div class="work-role">Strategic Finance Lead · 2022 – 2024</div>
+        <div class="work-meta">
+          <div class="work-icon"><img src="img/whop-icon.svg" alt=""></div>
+          <div class="work-info">
+            <div class="work-title">Whop</div>
+            <div class="work-tag">Powering online businesses.</div>
+          </div>
         </div>
-        <div class="work-toggle">+</div>
-      </div>
-      <div class="work-expand">
-        <p class="work-note">Series B sports gaming & digital marketplace.</p>
-        <ul class="work-points">
-          <li>Promoted from analyst to lead; reported to the CFO</li>
-          <li>Built multi-product financial models and drove cost initiatives that <strong>extended runway significantly</strong></li>
-          <li>Renegotiated multi-million dollar licensing deals with MLB, NBA, and MLS</li>
-          <li>Partnered with Product & Growth to measure ROI on key strategies and marketing</li>
-        </ul>
-      </div>
-    </div>
+      </button>
 
-    <div class="work-item" onclick="this.classList.toggle('open')">
-      <div class="work-top">
-        <div>
-          <div class="work-company">CB Insights</div>
-          <div class="work-role">Business Analyst · 2018 – 2022</div>
+      <button class="work-card" data-company="sorare" aria-label="Open Sorare details">
+        <div class="work-visual">
+          <img src="img/sorare-site.jpg" alt="Sorare website">
         </div>
-        <div class="work-toggle">+</div>
+        <div class="work-meta">
+          <div class="work-icon"><img src="img/sorare-icon.png" alt=""></div>
+          <div class="work-info">
+            <div class="work-title">Sorare</div>
+            <div class="work-tag">Sports gaming, reimagined.</div>
+          </div>
+        </div>
+      </button>
+
+      <button class="work-card" data-company="cbi" aria-label="Open CB Insights details">
+        <div class="work-visual">
+          <img src="img/cbi-site.jpg" alt="CB Insights website">
+        </div>
+        <div class="work-meta">
+          <div class="work-icon"><img src="img/cbi-icon.png" alt=""></div>
+          <div class="work-info">
+            <div class="work-title">CB Insights</div>
+            <div class="work-tag">Market intelligence for startups.</div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+
+  <!-- THOUGHTS TAB -->
+  <div class="tab-section fade" id="thoughts">
+    <div class="intro">
+      <h1>A collection of thoughts, stories, and writing I like.</h1>
+      <p>Some I wrote. Some came from people in my circle. All of it worth holding onto.</p>
+    </div>
+
+    <div class="writing-wrap">
+      <div class="writing-item">
+        <div class="writing-thumb">·</div>
+        <div class="writing-info">
+          <div class="writing-title">Coming soon</div>
+        </div>
       </div>
-      <div class="work-expand">
-        <p class="work-note">B2B market intelligence SaaS platform.</p>
-        <ul class="work-points">
-          <li>Advanced from sales into an internal strategy & analytics role</li>
-          <li>Built BI infrastructure covering GTM, conversion, retention, and contract values</li>
-          <li>Launched two products 0→1 into new markets</li>
-        </ul>
+
+      <div class="writing-item">
+        <div class="writing-thumb">·</div>
+        <div class="writing-info">
+          <div class="writing-title">Coming soon</div>
+        </div>
+      </div>
+
+      <div class="writing-item">
+        <div class="writing-thumb">·</div>
+        <div class="writing-info">
+          <div class="writing-title">Coming soon</div>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="section fade" id="writing">
-    <div class="section-head">
-      <span class="section-label">Writing</span>
-      <div class="section-rule"></div>
+  <!-- ABOUT TAB -->
+  <div class="tab-section fade" id="about">
+    <div class="intro">
+      <h1>I'm Tom Young — based in east village. Work in williamsburg. Play soccer in manhattan. Generate steady volume of haha's in group chats.</h1>
     </div>
-    <div>
-      <div class="writing-item">
-        <span class="writing-title">What I've learned about fundraising from inside the room</span>
-        <span class="draft-pill">soon</span>
+    <div class="about-wrap">
+      <div class="about-text">
+        <p>I went to college at Williams, where I majored in economics and logged another chapter of my soccer career. I captained the team but also suffered a really gnarly leg injury that cut my story short.</p>
+        <p>My final internship before graduating was at the Williams College Investment Office, but I realized that Boston and traditional finance was not the path I wanted to take out of the post-grad gates.</p>
+        <p>I moved back to NY after graduating and have stitched together a few career moves since — sales and strategy at CB Insights, finance at Sorare, and now strategic finance at Whop. Each step was a deeper pull into a thing I didn't know I wanted to do until I was already doing it.</p>
+        <p>I haven't let soccer go completely, serving on a team called Pete's Dragons since 2019. I'm a frequent runner and ran the 2024 NYC Marathon.</p>
+        <p>I value my close circles pretty fiercely. I find divinity in a coffee chat with a close friend in the east village. I hold sacred a long weekend in Davis Park with my family.</p>
       </div>
-      <div class="writing-item">
-        <span class="writing-title">Unit economics aren't a finance thing — they're a product thing</span>
-        <span class="draft-pill">soon</span>
-      </div>
-      <div class="writing-item">
-        <span class="writing-title">On the creator economy actually working now</span>
-        <span class="draft-pill">soon</span>
-      </div>
-      <div class="writing-item">
-        <span class="writing-title">How I think about "runway"</span>
-        <span class="draft-pill">soon</span>
-      </div>
-    </div>
-    <p style="margin-top:18px; font-size:13px; color:var(--muted); font-style:italic;">Slowly getting thoughts out of my head and onto a page.</p>
-  </div>
-
-  <div class="about-strip fade">
-    Outside of work I'm <strong>based in New York City</strong> — usually somewhere between the West Village and wherever there's good food. I think a lot about how technology and money interact, why some businesses compound and others don't, and whether the internet is net good. I try to write when I have something worth saying.
-  </div>
-
-  <div class="section fade" id="contact">
-    <div class="section-head">
-      <span class="section-label">Contact</span>
-      <div class="section-rule"></div>
-    </div>
-    <p class="contact-intro">Always happy to talk — finance, startups, or anything else.</p>
-    <div>
-      <div class="contact-row">
-        <span class="contact-lbl">Email</span>
-        <a href="mailto:thomas.m.young96@gmail.com" class="contact-val">thomas.m.young96@gmail.com</a>
-      </div>
-      <div class="contact-row">
-        <span class="contact-lbl">Phone</span>
-        <a href="tel:9148746277" class="contact-val">914.874.6277</a>
-      </div>
-      <div class="contact-row">
-        <span class="contact-lbl">LinkedIn</span>
-        <a href="https://www.linkedin.com/in/tom-young-77a35910b/" target="_blank" class="contact-val">Tom Young</a>
-      </div>
+      <div class="about-photo"><img src="img/about-photo.jpg" alt="Tom Young"></div>
     </div>
   </div>
 
-  <footer>
-    <p>Tom Young · New York · 2026</p>
-  </footer>
+</main>
 
+<!-- Work detail modal -->
+<div class="work-modal" id="workModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-card">
+    <button class="modal-close" data-close aria-label="Close">×</button>
+    <div class="modal-hero" id="modalHero"><img id="modalHeroImg" src="" alt=""></div>
+    <div class="modal-header">
+      <div class="modal-icon"><img id="modalIcon" src="" alt=""></div>
+      <div class="modal-title" id="modalTitle"></div>
+    </div>
+    <div class="modal-meta" id="modalMeta"></div>
+    <div class="modal-intro" id="modalIntro"></div>
+    <div class="modal-role" id="modalRole"></div>
+    <div class="modal-sections-label" id="modalSectionsLabel">Stuff I helped out with</div>
+    <div class="modal-sections" id="modalSections"></div>
+    <div class="modal-next" id="modalNext"></div>
+  </div>
 </div>
+
+<footer>
+  <div class="footer-left">
+    <a href="#" class="footer-avatar" aria-label="Tom Young"><img src="img/logo-color.png" alt="Tom Young"></a>
+    <a href="mailto:thomas.m.young96@gmail.com" class="email">thomas.m.young96@gmail.com</a>
+  </div>
+  <div class="socials">
+    <a href="https://x.com/TomYoungggg" target="_blank" aria-label="Twitter">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/tom-young-77a35910b/" target="_blank" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+  </div>
+</footer>
+
 <script>
+  // Fade-in
   const fades = document.querySelectorAll('.fade');
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+      if (e.isIntersecting) { e.target.classList.add('in'); }
     });
   }, { threshold: 0.05 });
-  fades.forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; obs.observe(el); });
+  fades.forEach(el => obs.observe(el));
+
+  // Tab switching
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const tabSections = document.querySelectorAll('.tab-section');
+
+  function activateTab(id) {
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    tabSections.forEach(s => {
+      const isActive = s.id === id;
+      s.classList.toggle('active', isActive);
+      if (isActive) { s.classList.remove('in'); void s.offsetWidth; s.classList.add('in'); }
+    });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  navLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      history.replaceState(null, '', '#' + id);
+      activateTab(id);
+    });
+  });
+
+  const initial = window.location.hash.slice(1);
+  if (initial && document.getElementById(initial)) activateTab(initial);
+
+  // Work detail modal — case-study layout
+  const workDetails = {
+    whop: {
+      icon: 'img/whop-icon.svg',
+      hero: 'img/whop-site.jpg',
+      title: 'Whop',
+      role: 'Strategic finance',
+      dates: '2024 – present',
+      intro: 'Whop is the platform powering creators and online businesses — payments, tools, and a marketplace for digital products.',
+      summary: 'When he joined, the company was a fairly niche outfit with an office in the domino sugar factory. Now Whop is on both coasts, 100 people, and 9 figures of annualized revenue. He served as interim head of finance for 12 months, and continues to lead strategic finance — fundraising, modeling, investor reporting, sales tax, and working with product, data, and sales on unit economics and strategy.',
+      sections: [
+        {
+          source: 'Tether.io · February 2026',
+          title: 'Tether invests $200M in Whop at $1.6B valuation',
+          link: 'https://tether.io/news/tether-invests-in-whop-one-of-the-fastest-growing-internet-markets-to-power-stablecoin-payments-for-the-next-generation-of-the-internet-economy/',
+          body: 'Led the series c alongside the ceo and general counsel — a $200M strategic investment from Tether that doubled the valuation from $0.8B to $1.6B and brought stablecoin infrastructure into the platform.'
+        },
+        {
+          source: 'LinkedIn · April 2026',
+          title: 'Whop x Numeral — sales tax at checkout',
+          link: 'https://www.linkedin.com/posts/sambross_thrilled-to-announced-that-weve-partnered-share-7445114242472775681-M_jp',
+          body: 'Partnered with numeral to power sales tax calculations at checkout — built the playbook with a big 4 tax firm and integrated numeral\'s ai tax engine into the checkout flow.',
+          image: 'img/whop-numeral.jpg'
+        },
+      ]
+    },
+    sorare: {
+      icon: 'img/sorare-icon.png',
+      hero: 'img/sorare-site.jpg',
+      title: 'Sorare',
+      role: 'Finance',
+      dates: '2022 – 2024',
+      intro: 'Sorare makes officially licensed sports games — fantasy and trading on top of digital cards from the biggest leagues.',
+      summary: 'Joined right after the series b as the company was scaling up after a frothy web3 moment, and stayed through the harder, more focused chapter that followed. Started as an analyst, then was promoted to lead the strategic finance team, reporting to the cfo. Built and maintained the financial models across the business, found cost saves that bought the company 2+ years of runway, and partnered with product and growth on measuring roi and payback. Also worked alongside biz dev to re-negotiate the league licensing deals — mlb, nba, and mls.',
+      sections: [
+        {
+          source: 'TechCrunch · January 2023',
+          title: 'Sorare lands four-year Premier League deal',
+          link: 'https://techcrunch.com/2023/01/30/sorare-teams-up-with-the-premier-league-for-its-nft-fantasy-football-game/',
+          body: 'Worked on the financial side of the four-year licensing partnership with the premier league — bringing officially licensed digital cards for players across all 20 epl clubs onto Sorare.'
+        },
+        {
+          source: 'Forbes · September 2022',
+          title: 'NBA & NBPA strike deal with Sorare for NFT fantasy game',
+          link: 'https://www.forbes.com/sites/timcasey/2022/09/07/nba-nba-players-association-strike-deal-with-sorare-for-nft-fantasy-game/',
+          body: 'Worked on the financial structuring behind Sorare\'s expansion into u.s. sports — partnerships with the nba, nbpa, and mlb that brought officially licensed cards from the biggest leagues onto the platform.'
+        },
+        {
+          source: 'Sorare blog',
+          title: 'Introducing Cash Wallet on Sorare',
+          link: 'https://medium.com/sorare/introducing-cash-wallet-on-sorare-b8735af15a30',
+          body: 'Helped bring fiat on/off-ramps natively into the Sorare experience — making the platform feel like a normal consumer app instead of a crypto product.'
+        }
+      ]
+    },
+    cbi: {
+      icon: 'img/cbi-icon.png',
+      hero: 'img/cbi-site.jpg',
+      title: 'CB Insights',
+      role: 'Sales, Strategy',
+      dates: '2018 – 2022',
+      intro: 'CB Insights is the market intelligence platform fortune 500s and top investors use to make bets on tech.',
+      summary: 'His first job out of college. Started on the sales floor, then pivoted to working as a business analyst for the svp of strategy. Operated as the internal consulting unit — built out bi and analytics for go-to-market motion, retention, payback periods, and contract values. Helped launch two new products from scratch in alternative data and premium research. Spent four years there as the company scaled into a $70M+ arr business.',
+      sections: [
+        {
+          source: 'CB Insights · July 2020',
+          title: 'CB Insights acquires VentureSource data from Dow Jones',
+          link: 'https://www.cbinsights.com/research/team-blog/dow-jones-venturesource-valuations/',
+          body: 'CBI\'s first acquisition — buying 27 years of private company data from Dow Jones to broaden the platform\'s coverage of the venture markets. Done without raising a dollar of additional outside capital.'
+        },
+        {
+          source: 'CB Insights',
+          title: 'Analyst Briefings — a self-serve product for tech vendors',
+          link: 'https://www.cbinsights.com/what-we-offer/technology-vendors/',
+          body: 'Contributed to scoping and launching Analyst Briefings — a self-serve product giving tech vendors a way to put their narrative in front of CBI\'s buyer audience.'
+        },
+        {
+          source: 'Latka',
+          title: 'How CB Insights grew to $100M ARR without venture capital',
+          link: 'https://getlatka.com/blog/how-cbinsights-grew-to-100m-arr-without-venture-capital-cbinsights-revenue/',
+          body: 'A look inside how the company built a 9-figure ARR business without taking VC money — bootstrapped, profitable, and stubbornly independent. A rare model for SaaS at that scale.'
+        }
+      ]
+    }
+  };
+
+  const order = ['whop', 'sorare', 'cbi'];
+
+  const modal = document.getElementById('workModal');
+  const modalIcon = document.getElementById('modalIcon');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalMeta = document.getElementById('modalMeta');
+  const modalIntro = document.getElementById('modalIntro');
+  const modalRole = document.getElementById('modalRole');
+  const modalSections = document.getElementById('modalSections');
+  const modalNext = document.getElementById('modalNext');
+
+  const modalHero = document.getElementById('modalHero');
+  const modalHeroImg = document.getElementById('modalHeroImg');
+
+  function openWorkModal(key) {
+    const d = workDetails[key];
+    if (!d) return;
+    if (d.hero) {
+      modalHeroImg.src = d.hero;
+      modalHero.style.display = '';
+    } else {
+      modalHero.style.display = 'none';
+    }
+    modalIcon.src = d.icon;
+    modalTitle.textContent = d.title;
+    const metaParts = [d.role, d.dates].filter(Boolean);
+    modalMeta.textContent = metaParts.join(' · ');
+    modalIntro.textContent = d.intro || '';
+    modalIntro.style.display = d.intro ? '' : 'none';
+    modalRole.textContent = d.summary || '';
+    modalRole.style.display = d.summary ? '' : 'none';
+
+    modalSections.innerHTML = d.sections.map(s => `
+      <div class="modal-section-item">
+        ${s.source ? `<div class="modal-section-source">${s.source}</div>` : ''}
+        <div class="modal-section-title">${s.link ? `<a href="${s.link}" target="_blank" rel="noopener">${s.title} ↗</a>` : s.title}</div>
+        ${s.body ? `<div class="modal-section-body">${s.body}</div>` : ''}
+        ${s.image ? `<div class="modal-section-image"><img src="${s.image}" alt=""></div>` : ''}
+      </div>
+    `).join('');
+
+    // Prev / next project links (no looping)
+    const idx = order.indexOf(key);
+    const prevKey = idx > 0 ? order[idx - 1] : null;
+    const nextKey = idx < order.length - 1 ? order[idx + 1] : null;
+    const prevHtml = prevKey
+      ? `<button class="modal-nav-link" data-nav="${prevKey}">← ${workDetails[prevKey].title}</button>`
+      : '<span class="modal-nav-spacer"></span>';
+    const nextHtml = nextKey
+      ? `<button class="modal-nav-link" data-nav="${nextKey}">${workDetails[nextKey].title} →</button>`
+      : '<span class="modal-nav-spacer"></span>';
+    modalNext.innerHTML = prevHtml + nextHtml;
+    modalNext.querySelectorAll('[data-nav]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        modal.querySelector('.modal-card').scrollTop = 0;
+        window.scrollTo({ top: 0, behavior: 'instant' });
+        openWorkModal(btn.dataset.nav);
+      });
+    });
+
+    modal.dataset.company = key;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  function closeWorkModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.work-card').forEach(card => {
+    card.addEventListener('click', () => openWorkModal(card.dataset.company));
+  });
+  modal.querySelectorAll('[data-close]').forEach(el => {
+    el.addEventListener('click', closeWorkModal);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeWorkModal();
+  });
 </script>
 </body>
 </html>
