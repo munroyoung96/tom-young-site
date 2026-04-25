@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tom Young</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Geist:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #faf9f7;
+  --surface: #f2f0ec;
+  --text: #1a1916;
+  --muted: #9a9690;
+  --soft: #c8c4be;
+  --border: #e6e3dd;
+  --accent: #c07a4a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Geist', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* Nav */
+nav { padding: 28px 0 0; margin-bottom: 80px; }
+.nav-inner { display: flex; justify-content: space-between; align-items: baseline; }
+.nav-name {
+  font-family: 'Fraunces', serif;
+  font-size: 16px; font-weight: 400; font-style: italic;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a { font-size: 13px; font-weight: 400; color: var(--muted); transition: color 0.15s; }
+.nav-links a:hover { color: var(--text); }
+
+/* Hero */
+.hero { margin-bottom: 96px; }
+.hero-greeting { font-size: 13px; font-weight: 400; color: var(--muted); margin-bottom: 20px; }
+.hero-text {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 300; line-height: 1.3; letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+.hero-text em { font-style: italic; color: var(--accent); }
+.hero-sub { font-size: 15px; color: var(--muted); line-height: 1.85; }
+.hero-sub a {
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1px;
+  transition: border-color 0.15s;
+}
+.hero-sub a:hover { border-color: var(--text); }
+
+/* Sections */
+.section { margin-bottom: 88px; }
+.section-head { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+.section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.section-rule { flex: 1; height: 1px; background: var(--border); }
+
+/* Work */
+.work-item {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+.work-item:first-child { border-top: 1px solid var(--border); }
+.work-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.work-company { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+.work-role { font-size: 13px; color: var(--muted); }
+.work-toggle {
+  font-size: 20px; color: var(--soft); transition: transform 0.2s, color 0.15s;
+  flex-shrink: 0; margin-top: 1px; user-select: none; line-height: 1;
+}
+.work-item.open .work-toggle { transform: rotate(45deg); color: var(--accent); }
+.work-expand { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+.work-item.open .work-expand { max-height: 500px; padding-top: 16px; }
+.work-note { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 12px; }
+.work-points { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+.work-points li {
+  font-size: 13.5px; color: #6e6b65; line-height: 1.65;
+  padding-left: 16px; position: relative;
+}
+.work-points li::before { content: '–'; position: absolute; left: 0; color: var(--soft); }
+.work-points strong { color: var(--text); font-weight: 500; }
+
+/* Writing */
+.writing-item {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--border);
+}
+.writing-item:first-child { border-top: 1px solid var(--border); }
+.writing-title { font-size: 15px; font-weight: 400; color: var(--text); line-height: 1.4; transition: color 0.15s; }
+.writing-item:hover .writing-title { color: var(--accent); }
+.draft-pill {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  background: var(--surface); color: var(--muted);
+  padding: 2px 8px; border-radius: 20px; border: 1px solid var(--border);
+  white-space: nowrap; flex-shrink: 0;
+}
+
+/* About strip */
+.about-strip {
+  background: var(--surface); border-radius: 12px;
+  padding: 28px 32px; font-size: 14px; color: var(--muted);
+  line-height: 1.9; margin-bottom: 88px;
+}
+.about-strip strong { color: var(--text); font-weight: 500; }
+
+/* Contact */
+.contact-intro {
+  font-family: 'Fraunces', serif;
+  font-size: 24px; font-weight: 300; font-style: italic;
+  margin-bottom: 24px; line-height: 1.4;
+}
+.contact-row {
+  display: flex; align-items: center; gap: 16px;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+.contact-row:first-of-type { border-top: 1px solid var(--border); }
+.contact-lbl {
+  font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); width: 72px; flex-shrink: 0;
+}
+.contact-val {
+  font-size: 14px; color: var(--text);
+  border-bottom: 1px solid transparent; padding-bottom: 1px;
+  transition: color 0.15s, border-color 0.15s;
+}
+.contact-val:hover { color: var(--accent); border-color: var(--accent); }
+
+/* Footer */
+footer { padding: 20px 0 48px; border-top: 1px solid var(--border); margin-top: 0; }
+footer p { font-size: 12px; color: var(--soft); }
+
+/* Fade */
+.fade { opacity: 0; transform: translateY(10px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.fade.in { opacity: 1; transform: none; }
+
+@media (max-width: 560px) {
+  .wrap { padding: 0 20px; }
+  .hero-text { font-size: 26px; }
+  .writing-item { flex-direction: column; gap: 6px; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-name">Tom Young</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="hero fade">
+    <p class="hero-greeting">Hey, I'm Tom —</p>
+    <h1 class="hero-text">finance person trying to<br>build things that <em>matter.</em></h1>
+    <p class="hero-sub">
+      I run strategic finance at <a href="https://whop.com" target="_blank">Whop</a>, a platform for creators and online businesses. Before that I was at <a href="https://sorare.com" target="_blank">Sorare</a> and <a href="https://cbinsights.com" target="_blank">CB Insights</a>. Williams College, Economics. Based in New York.
+    </p>
+  </div>
+
+  <div class="section fade" id="work">
+    <div class="section-head">
+      <span class="section-label">Work</span>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="work-item" onclick="this.classList.toggle('open')">
+      <div class="work-top">
+        <div>
+          <div class="work-company">Whop</div>
+          <div class="work-role">Strategic Finance Manager · 2024 – present</div>
+        </div>
+        <div class="work-toggle">+</div>
+      </div>
+      <div class="work-expand">
+        <p class="work-note">Series C creator economy platform — payments, tooling & apps for online businesses.</p>
+        <ul class="work-points">
+          <li>Report directly to the CEO; own the finance function end-to-end</li>
+          <li>Led our Series C — closed a <strong>large strategic investment from Tether</strong>, doubling the company's valuation</li>
+          <li>Managed a period of really efficient growth — <strong>revenue scaled 4× YoY</strong> while EBITDA went from deeply negative to breakeven</li>
+          <li>Partner with product, data, and sales on capital allocation and unit economics</li>
+          <li>Own sales tax strategy across US and international jurisdictions</li>
+          <li>Run monthly planning, forecasting, and budgeting with all department heads</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="this.classList.toggle('open')">
+      <div class="work-top">
+        <div>
+          <div class="work-company">Sorare</div>
+          <div class="work-role">Strategic Finance Lead · 2022 – 2024</div>
+        </div>
+        <div class="work-toggle">+</div>
+      </div>
+      <div class="work-expand">
+        <p class="work-note">Series B sports gaming & digital marketplace.</p>
+        <ul class="work-points">
+          <li>Promoted from analyst to lead; reported to the CFO</li>
+          <li>Built multi-product financial models and drove cost initiatives that <strong>extended runway significantly</strong></li>
+          <li>Renegotiated multi-million dollar licensing deals with MLB, NBA, and MLS</li>
+          <li>Partnered with Product & Growth to measure ROI on key strategies and marketing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="work-item" onclick="this.classList.toggle('open')">
+      <div class="work-top">
+        <div>
+          <div class="work-company">CB Insights</div>
+          <div class="work-role">Business Analyst · 2018 – 2022</div>
+        </div>
+        <div class="work-toggle">+</div>
+      </div>
+      <div class="work-expand">
+        <p class="work-note">B2B market intelligence SaaS platform.</p>
+        <ul class="work-points">
+          <li>Advanced from sales into an internal strategy & analytics role</li>
+          <li>Built BI infrastructure covering GTM, conversion, retention, and contract values</li>
+          <li>Launched two products 0→1 into new markets</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section fade" id="writing">
+    <div class="section-head">
+      <span class="section-label">Writing</span>
+      <div class="section-rule"></div>
+    </div>
+    <div>
+      <div class="writing-item">
+        <span class="writing-title">What I've learned about fundraising from inside the room</span>
+        <span class="draft-pill">soon</span>
+      </div>
+      <div class="writing-item">
+        <span class="writing-title">Unit economics aren't a finance thing — they're a product thing</span>
+        <span class="draft-pill">soon</span>
+      </div>
+      <div class="writing-item">
+        <span class="writing-title">On the creator economy actually working now</span>
+        <span class="draft-pill">soon</span>
+      </div>
+      <div class="writing-item">
+        <span class="writing-title">How I think about "runway"</span>
+        <span class="draft-pill">soon</span>
+      </div>
+    </div>
+    <p style="margin-top:18px; font-size:13px; color:var(--muted); font-style:italic;">Slowly getting thoughts out of my head and onto a page.</p>
+  </div>
+
+  <div class="about-strip fade">
+    Outside of work I'm <strong>based in New York City</strong> — usually somewhere between the West Village and wherever there's good food. I think a lot about how technology and money interact, why some businesses compound and others don't, and whether the internet is net good. I try to write when I have something worth saying.
+  </div>
+
+  <div class="section fade" id="contact">
+    <div class="section-head">
+      <span class="section-label">Contact</span>
+      <div class="section-rule"></div>
+    </div>
+    <p class="contact-intro">Always happy to talk — finance, startups, or anything else.</p>
+    <div>
+      <div class="contact-row">
+        <span class="contact-lbl">Email</span>
+        <a href="mailto:thomas.m.young96@gmail.com" class="contact-val">thomas.m.young96@gmail.com</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-lbl">Phone</span>
+        <a href="tel:9148746277" class="contact-val">914.874.6277</a>
+      </div>
+      <div class="contact-row">
+        <span class="contact-lbl">LinkedIn</span>
+        <a href="https://www.linkedin.com/in/tom-young-77a35910b/" target="_blank" class="contact-val">Tom Young</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>Tom Young · New York · 2026</p>
+  </footer>
+
+</div>
+<script>
+  const fades = document.querySelectorAll('.fade');
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.05 });
+  fades.forEach((el, i) => { el.style.transitionDelay = (i * 0.07) + 's'; obs.observe(el); });
+</script>
+</body>
+</html>
